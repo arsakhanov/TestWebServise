@@ -10,7 +10,7 @@ public class Contacts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int number;
+    private String number;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
@@ -20,16 +20,20 @@ public class Contacts {
     @JoinColumn(name = "contact_type_id")
     private Contact_type type;
 
+    public Contacts(){}
 
+    public Contacts(String number){
+        this.number = number;
+    }
     public int getId(){
         return id;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String  number) {
         this.number = number;
     }
 
