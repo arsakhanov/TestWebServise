@@ -5,8 +5,12 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс описывает модель таблицы person в базе данных
+ */
+
 @Entity
-@Table (name = "person")
+@Table(name = "person")
 public class Person {
 
     @Id
@@ -18,28 +22,20 @@ public class Person {
     private String position;
 
     @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Contacts> contacts;
+    private List<Contact> contacts;
 
-    public void addNumber(Contacts contact){
-        contact.setPerson(this);
-        contacts.add(contact);
+    public Person() {
     }
 
-    public void removeNumber(Contacts contact){
-        contacts.remove(contact);
-    }
-
-    public Person(){}
-
-    public Person(String first_name, String last_name, String middle_name, String position){
+    public Person(String first_name, String last_name, String middle_name, String position) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.middle_name = middle_name;
         this.position = position;
-        contacts = new ArrayList<Contacts>();
+        contacts = new ArrayList<Contact>();
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
@@ -75,11 +71,11 @@ public class Person {
         this.position = position;
     }
 
-    public List<Contacts> getNumbers() {
+    public List<Contact> getNumbers() {
         return contacts;
     }
 
-    public void setNumbers(List<Contacts> contacts) {
+    public void setNumbers(List<Contact> contacts) {
         this.contacts = contacts;
     }
 

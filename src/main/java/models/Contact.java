@@ -1,39 +1,45 @@
 package models;
 
-import javax.annotation.Generated;
 import javax.persistence.*;
 
+/**
+ * Класс описывает модель таблицы contacts в базе данных
+ */
+
 @Entity
-@Table (name = "contacts")
-public class Contacts {
+@Table(name = "contacts")
+public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String number;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "person_id")
     private Person person;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     @JoinColumn(name = "contact_type_id")
-    private Contact_type type;
+    private ContactType type;
 
-    public Contacts(){}
+    public Contact() {
+    }
 
-    public Contacts(String number){
+    public Contact(String number) {
         this.number = number;
     }
-    public int getId(){
+
+    public int getId() {
         return id;
     }
+
 
     public String getNumber() {
         return number;
     }
 
-    public void setNumber(String  number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -45,11 +51,11 @@ public class Contacts {
         this.person = person;
     }
 
-    public Contact_type getType() {
+    public ContactType getType() {
         return type;
     }
 
-    public void setType(Contact_type type) {
+    public void setType(ContactType type) {
         this.type = type;
     }
 
