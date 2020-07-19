@@ -8,6 +8,10 @@ import models.Contact;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+
+/**
+ * Класс для работы с веб-сервисом
+ */
 @WebService
 public class ContactEndpoint {
 

@@ -20,11 +20,13 @@ public class ContactDaoImpl implements ContactDao {
     }
 
     public void save(Contact contact) {
+        //создается экземпляр класса Session
+        //жизненный цикл объекта связан с началом и окончанием транцакций
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        session.save(contact);
-        tx.commit();
-        session.close();
+        Transaction tx = session.beginTransaction(); //начало транзакции
+        session.save(contact); //сохранение объекта в базе данных
+        tx.commit(); //конец транзакции
+        session.close(); //закрытие сессии
     }
 
     public void update(Contact contact) {

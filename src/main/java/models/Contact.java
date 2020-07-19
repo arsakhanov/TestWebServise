@@ -3,7 +3,7 @@ package models;
 import javax.persistence.*;
 
 /**
- * Класс описывает модель таблицы contacts в базе данных
+ * Класс-сущность описывает модель таблицы contacts в базе данных
  */
 
 @Entity
@@ -14,8 +14,9 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String number;
-
+    //зависимость вида многие к одному
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    //указываем поля для многие к одному
     @JoinColumn(name = "person_id")
     private Person person;
 

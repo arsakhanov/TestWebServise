@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Класс описывает модель таблицы contact_type в базе данных
+ * Класс-сущность описывает модель таблицы contact_type в базе данных
  */
 
 @Entity

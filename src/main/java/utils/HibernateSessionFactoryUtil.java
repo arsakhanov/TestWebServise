@@ -20,10 +20,11 @@ public class HibernateSessionFactoryUtil {
     public static SessionFactory getSessionFactory(){
         if(sessionFactory == null){
             try {
-                Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(Person.class);
-                configuration.addAnnotatedClass(ContactType.class);
-                configuration.addAnnotatedClass(Contact.class);
+                Configuration configuration = new Configuration().configure(); //чтение файла конфигурации hibernate.cfg.xml
+                configuration.addAnnotatedClass(Person.class); //добавление класса-сущности Person
+                configuration.addAnnotatedClass(ContactType.class); // добавление класса-сущности ContactType
+                configuration.addAnnotatedClass(Contact.class); // добавление класса-сущности Contact
+                //считывание параметров для работы hibernate указанные в файле конфигурации
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
             }catch (Exception e){
